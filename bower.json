@@ -1,0 +1,48 @@
+{
+  "name": "mvc-pagination",
+  "version": "1.0.0",
+  "title": "MVC Pagination For SEO",
+  "description": "Jquery AJAX Pagination for SEO in .NET",
+  "keywords": [
+    "jquery",
+    "SEO",
+    "MVC",
+    ".NET",
+    "bootstrap",
+	"jquery-plugin",
+  ],
+  "homepage": "https://github.com/ikezili/mvc-pagination",
+  "author": {
+    "name": "Leandro Ikezili",
+    "url": "http://leandro.ikezili.com.br"
+  },
+  "maintainers": [
+    {
+      "name": "Leandro Ikezili",
+      "url": "http://leandro.ikezili.com.br"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ikezili/mvc-pagination.git"
+  },
+  "bugs": "https://github.com/ikezili/mvc-pagination/issues",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://www.opensource.org/licenses/MIT"
+    }
+  ],
+  "dependencies": {
+    "jquery": ">=1.7.0"
+  },
+  "main": [
+    "css/bootstrap.css",
+    "js/jquery.mvcPagination.js",
+    "cors/components/Pagination.cs"
+  ],
+  "ignore": [
+    "/*.*",
+    "demo"
+  ]
+}
