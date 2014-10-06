@@ -42,7 +42,7 @@
         showPrevNext: @Html.Raw(modelPaginning.ShowPrevNext.ToString().ToLower()),
         showFirstLast: @Html.Raw(modelPaginning.ShowFirstLast.ToString().ToLower()),
         showControl: @Html.Raw(modelPaginning.ShowControl.ToString().ToLower()),
-        hrefVariable: "@Html.Raw(modelPaginning.HrefVariable)";
+        hrefVariable: "@Html.Raw(modelPaginning.HrefVariable)",
         onClick: function (event, page) {
             $('#page-content').text('Page ' + page);
         }
