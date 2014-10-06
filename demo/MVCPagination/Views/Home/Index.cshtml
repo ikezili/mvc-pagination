@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "MVC Pagination";
+}
+@using MVCPagination.Components
+@{
+    var modelPaginning = new Pagination.ModelPaginning();
+    modelPaginning.Id = "mvc-pagination";
+    modelPaginning.TotalPages = 50;
+    modelPaginning.StartPage =  Convert.ToInt32(!String.IsNullOrEmpty(Request["page"]) ? Request["page"].ToString() : "1");
+    modelPaginning.VisiblePages = 5;
+    modelPaginning.First = "Primeiro";
+    modelPaginning.Prev = "Anterior";
+    modelPaginning.Next = "Próximo";
+    modelPaginning.Last = "Último";
+    modelPaginning.Href = "?page={{pagenumber}}";
+    modelPaginning.ShowControl = true;
+    modelPaginning.ShowPrevNext = true;
+    modelPaginning.ShowFirstLast = true;
+    modelPaginning.HrefVariable = "{{pagenumber}}";
+}
+
+@using (Html.MVCPagination(modelPaginning)){ }
+
+<div id="page-content">
+
+</div>
+
+@using (Html.MVCPagination(modelPaginning)) { }
+
+
+
+    <script>
+    $('.mvc-pagination').mvcPagination({
+        totalPages: @Html.Raw(modelPaginning.TotalPages),
+        visiblePages: @Html.Raw(modelPaginning.VisiblePages),
+        href: "@Html.Raw(modelPaginning.Href)",
+        startPage: @Html.Raw(modelPaginning.StartPage),
+        first: "@Html.Raw(modelPaginning.First)",
+        prev: "@Html.Raw(modelPaginning.Prev)",
+        next: "@Html.Raw(modelPaginning.Next)",
+        last: "@Html.Raw(modelPaginning.Last)",
+        showPrevNext: @Html.Raw(modelPaginning.ShowPrevNext.ToString().ToLower()),
+        showFirstLast: @Html.Raw(modelPaginning.ShowFirstLast.ToString().ToLower()),
+        showControl: @Html.Raw(modelPaginning.ShowControl.ToString().ToLower()),
+        hrefVariable: "@Html.Raw(modelPaginning.HrefVariable)";
+        onClick: function (event, page) {
+            $('#page-content').text('Page ' + page);
+        }
+    });
+    </script>
+
