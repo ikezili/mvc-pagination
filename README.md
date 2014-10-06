@@ -6,8 +6,6 @@ Plugin requires jQuery (required - 1.7.0 or higher).
 
 You can use Bootstrap CSS styler or Custom CSS.
 
-The following code shows call the function on `<ul>` tag (it can be also `<div>` tag).
-
 ```C#
 @using Pagination.Components
 @{
