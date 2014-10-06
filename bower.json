@@ -37,7 +37,6 @@
     "jquery": ">=1.7.0"
   },
   "main": [
-    "css/bootstrap.css",
     "js/jquery.mvcPagination.js",
     "cors/components/Pagination.cs"
   ],
