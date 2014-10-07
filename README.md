@@ -50,4 +50,23 @@ $('.mvc-pagination').mvcPagination({
 
 ```
 
+
+## Version history ##
+
+### Version 1.0 ###
+
+Inital release
+
+
+
+## License and Contact Information ##
+
+This plugin is licensed under the GPL v2. You can find the full license text here: http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt If you need another license, write me an email and tell me what the library will be used for. I usually grant other open source licenses on an individual basis.
+
+**Source code**: http://ikezili.github.io/mvc-pagination
+
+You can reach me at:
+**Leandro Ikezili**
+http://leandro.ikezili.com
+
 For more information see [docs on github pages](http://ikezili.github.io/mvc-pagination)
