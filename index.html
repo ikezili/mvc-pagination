@@ -133,6 +133,59 @@
     <span class="o">&lt;</span><span class="err">/script&gt;</span>
 </pre></div>
 
+<h3>
+<a name="example-3" class="anchor" href="#example-3"><span class="octicon octicon-link"></span></a>Example 3</h3>
+
+<p>Multiple Pagination</p>
+
+<p>C#</p>
+
+<div class="highlight highlight-C#"><pre><span class="n">@using</span> <span class="n">MVCPagination</span><span class="p">.</span><span class="n">Components</span>
+<span class="err">@</span><span class="p">{</span>
+    <span class="kt">var</span> <span class="n">modelPaginning</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Pagination</span><span class="p">.</span><span class="n">ModelPaginning</span><span class="p">();</span>
+    <span class="n">modelPaginning</span><span class="p">.</span><span class="n">Id</span> <span class="p">=</span> <span class="s">"mvc-pagination"</span><span class="p">;</span>
+    <span class="n">modelPaginning</span><span class="p">.</span><span class="n">TotalPages</span> <span class="p">=</span> <span class="m">50</span><span class="p">;</span>
+    <span class="n">modelPaginning</span><span class="p">.</span><span class="n">StartPage</span> <span class="p">=</span>  <span class="n">Convert</span><span class="p">.</span><span class="n">ToInt32</span><span class="p">(!</span><span class="n">String</span><span class="p">.</span><span class="n">IsNullOrEmpty</span><span class="p">(</span><span class="n">Request</span><span class="p">[</span><span class="s">"page"</span><span class="p">])</span> <span class="p">?</span> <span class="n">Request</span><span class="p">[</span><span class="s">"page"</span><span class="p">].</span><span class="n">ToString</span><span class="p">()</span> <span class="p">:</span> <span class="s">"1"</span><span class="p">);</span>
+    <span class="n">modelPaginning</span><span class="p">.</span><span class="n">VisiblePages</span> <span class="p">=</span> <span class="m">5</span><span class="p">;</span>
+    <span class="n">modelPaginning</span><span class="p">.</span><span class="n">First</span> <span class="p">=</span> <span class="s">"Primeiro"</span><span class="p">;</span>
+    <span class="n">modelPaginning</span><span class="p">.</span><span class="n">Prev</span> <span class="p">=</span> <span class="s">"Anterior"</span><span class="p">;</span>
+    <span class="n">modelPaginning</span><span class="p">.</span><span class="n">Next</span> <span class="p">=</span> <span class="s">"Próximo"</span><span class="p">;</span>
+    <span class="n">modelPaginning</span><span class="p">.</span><span class="n">Last</span> <span class="p">=</span> <span class="s">"Último"</span><span class="p">;</span>
+    <span class="n">modelPaginning</span><span class="p">.</span><span class="n">Href</span> <span class="p">=</span> <span class="s">"?page={{pagenumber}}"</span><span class="p">;</span>
+    <span class="n">modelPaginning</span><span class="p">.</span><span class="n">ShowControl</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+    <span class="n">modelPaginning</span><span class="p">.</span><span class="n">ShowPrevNext</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+    <span class="n">modelPaginning</span><span class="p">.</span><span class="n">ShowFirstLast</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+    <span class="n">modelPaginning</span><span class="p">.</span><span class="n">HrefVariable</span> <span class="p">=</span> <span class="s">"{{pagenumber}}"</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">@using</span> <span class="p">(</span><span class="n">Html</span><span class="p">.</span><span class="n">MVCPagination</span><span class="p">(</span><span class="n">modelPaginning</span><span class="p">)){</span> <span class="p">}</span>
+
+<span class="n">@using</span> <span class="p">(</span><span class="n">Html</span><span class="p">.</span><span class="n">MVCPagination</span><span class="p">(</span><span class="n">modelPaginning</span><span class="p">)){</span> <span class="p">}</span>
+</pre></div>
+
+<p>Js</p>
+
+<div class="highlight highlight-javascript"><pre>    <span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">'.mvc-pagination'</span><span class="p">).</span><span class="nx">mvcPagination</span><span class="p">({</span>
+        <span class="nx">totalPages</span><span class="o">:</span> <span class="err">@</span><span class="nx">Html</span><span class="p">.</span><span class="nx">Raw</span><span class="p">(</span><span class="nx">modelPaginning</span><span class="p">.</span><span class="nx">TotalPages</span><span class="p">),</span>
+        <span class="nx">visiblePages</span><span class="o">:</span> <span class="err">@</span><span class="nx">Html</span><span class="p">.</span><span class="nx">Raw</span><span class="p">(</span><span class="nx">modelPaginning</span><span class="p">.</span><span class="nx">VisiblePages</span><span class="p">),</span>
+        <span class="nx">href</span><span class="o">:</span> <span class="s2">"@Html.Raw(modelPaginning.Href)"</span><span class="p">,</span>
+        <span class="nx">startPage</span><span class="o">:</span> <span class="err">@</span><span class="nx">Html</span><span class="p">.</span><span class="nx">Raw</span><span class="p">(</span><span class="nx">modelPaginning</span><span class="p">.</span><span class="nx">StartPage</span><span class="p">),</span>
+        <span class="nx">first</span><span class="o">:</span> <span class="s2">"@Html.Raw(modelPaginning.First)"</span><span class="p">,</span>
+        <span class="nx">prev</span><span class="o">:</span> <span class="s2">"@Html.Raw(modelPaginning.Prev)"</span><span class="p">,</span>
+        <span class="nx">next</span><span class="o">:</span> <span class="s2">"@Html.Raw(modelPaginning.Next)"</span><span class="p">,</span>
+        <span class="nx">last</span><span class="o">:</span> <span class="s2">"@Html.Raw(modelPaginning.Last)"</span><span class="p">,</span>
+        <span class="nx">showPrevNext</span><span class="o">:</span> <span class="err">@</span><span class="nx">Html</span><span class="p">.</span><span class="nx">Raw</span><span class="p">(</span><span class="nx">modelPaginning</span><span class="p">.</span><span class="nx">ShowPrevNext</span><span class="p">.</span><span class="nx">ToString</span><span class="p">().</span><span class="nx">ToLower</span><span class="p">()),</span>
+        <span class="nx">showFirstLast</span><span class="o">:</span> <span class="err">@</span><span class="nx">Html</span><span class="p">.</span><span class="nx">Raw</span><span class="p">(</span><span class="nx">modelPaginning</span><span class="p">.</span><span class="nx">ShowFirstLast</span><span class="p">.</span><span class="nx">ToString</span><span class="p">().</span><span class="nx">ToLower</span><span class="p">()),</span>
+        <span class="nx">showControl</span><span class="o">:</span> <span class="err">@</span><span class="nx">Html</span><span class="p">.</span><span class="nx">Raw</span><span class="p">(</span><span class="nx">modelPaginning</span><span class="p">.</span><span class="nx">ShowControl</span><span class="p">.</span><span class="nx">ToString</span><span class="p">().</span><span class="nx">ToLower</span><span class="p">()),</span>
+        <span class="nx">hrefVariable</span><span class="o">:</span> <span class="s2">"@Html.Raw(modelPaginning.HrefVariable)"</span><span class="p">,</span>
+        <span class="nx">onClick</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">page</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span> <span class="nx">url</span><span class="o">:</span> <span class="s2">"test.html?page="</span><span class="o">+</span> <span class="nx">page</span><span class="p">,</span> <span class="nx">cache</span><span class="o">:</span> <span class="kc">false</span> <span class="p">}).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">html</span><span class="p">)</span> <span class="p">{</span>  <span class="nx">$</span><span class="p">(</span> <span class="s2">"#results"</span> <span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="nx">html</span><span class="p">);});</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+    <span class="o">&lt;</span><span class="err">/script&gt;</span>
+</pre></div>
+
 <h2>
 <a name="available-options" class="anchor" href="#available-options"><span class="octicon octicon-link"></span></a>Available Options</h2>
 
